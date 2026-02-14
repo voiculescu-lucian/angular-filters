@@ -1,4 +1,4 @@
-# AngularBloomreachFilters
+# Angular Filters
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
 
@@ -12,48 +12,10 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Task Details:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Fetch the events and their attributes for the filter from this endpoint: https://br-fe-assignment.github.io/customer-events/events.json
+2. Focus on good component structure with reusability and clear data flow in mind.
+3. Try to work iteratively towards a functional solution and make it as feature complete as possible.
+4. A pixel perfect solution is not mandatory.
+5. Log the data model into the console when the Apply filters button is clicked. We would like to see how you structure the data.
