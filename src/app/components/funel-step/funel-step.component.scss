@@ -1,0 +1,203 @@
+/* FUNNEL INNER BOX */
+.funnel-step {
+  background: #ffffff;
+  width: 100%;
+}
+
+/* STEP TITLE */
+.step-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 12px;
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.event-field {
+  width: 260px;
+}
+
+.event-field input {
+  cursor: pointer;
+}
+
+.edit-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  cursor: auto;
+  pointer-events: none;
+
+  &:hover {
+    background: transparent !important;
+  }
+
+   mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: #c5c9d2;
+  }
+}
+
+.event-field input {
+  cursor: default;
+}
+
+.event-attributes {
+  margin-top: 16px;
+}
+
+.add-attribute-btn {
+  font-weight: 600;
+  text-transform: none;
+}
+
+.property-row {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.step-body {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.event-field {
+  width: 250px;
+}
+
+.attribute-field {
+  width: 250px;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  
+  border-radius: 4px;
+  transition: background-color 0.2s;
+
+  &:not(:hover) {
+    .copy-btn {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  .step-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    
+    strong {
+        font-weight: 500;
+    }
+  }
+
+  .step-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .copy-btn {
+      transition: all 0.2s ease-in-out;
+    }
+
+    .delete-btn {
+        opacity: 1;
+        visibility: visible;
+    }
+  }
+}
+
+.add-step-btn, .refine-more-btn {
+  color: #1991d2;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-left: 24px;
+}
+
+.event-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.event-field {
+  width: 300px;
+}
+
+app-attribute {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+::ng-deep {
+  .mat-mdc-option:hover {
+    background-color: #f5f5f5 !important;
+  }
+
+  .mat-mdc-autocomplete-panel {
+    border-radius: 6px;
+  }
+
+  .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+  .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+  .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+    border-color: #dcdfe4 !important;
+    border-width: 1px !important;
+  }
+
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: #dcdfe4 !important;
+  }
+
+  .mat-mdc-autocomplete-panel {
+    background: #ffffff !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    padding: 8px 0;
+  }
+
+  .mat-mdc-option {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+  .mat-mdc-option:hover {
+    background-color: #f5f7fa !important;
+  }
+  .mat-mdc-option.mdc-list-item--selected {
+    background-color: #eef2f7 !important;
+  }
+
+  .mat-mdc-autocomplete-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .mat-mdc-autocomplete-panel::-webkit-scrollbar-thumb {
+    background: #d6dae1;
+    border-radius: 4px;
+  }
+
+  .mat-mdc-option:hover {
+    background-color: #ffcc00 !important;
+    color: #000 !important;
+  }
+}

@@ -1,0 +1,105 @@
+/* PAGE BACKGROUND */
+.page-container {
+  padding: 32px;
+  background: #f5f6f8;
+  min-height: 100vh;
+}
+
+/* MAIN CARD */
+.customer-filter-card {
+  background: #f0f1f4;
+  border-radius: 6px;
+  border: 1px solid #e2e5e9;
+  box-shadow: none;
+}
+
+mat-card {
+    padding: 8px 24px;
+}
+
+/* HEADER */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+}
+
+button.discard-btn {
+    &.mat-mdc-button {
+        color: #d14343;
+    }
+    &:hover {
+        background: white;
+    }
+    text-transform: none;
+    font-weight: 500;
+}
+
+.customer-filter-card {
+  padding: 0;
+}
+
+mat-card-content {
+  padding: 16px;
+}
+
+app-funel-step {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 28px;
+  width: 100%;
+}
+
+/* SEPARATOR + ADD STEP */
+.add-step-container {
+  padding-top: 20px;
+  text-align: center;
+
+  .add-step-btn {
+    color: #1991d2;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+}
+
+/* APPLY BUTTON */
+mat-card-actions button.apply-btn {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: 600;
+  text-transform: none;
+  box-shadow: none;
+  padding: 6px 20px;
+  border-radius: 4px;
+}
+
+.customer-filter-card {
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+}
+
+mat-card-actions.card-actions {
+  padding: 16px 0;
+  align-items: flex-start;
+}
+
+.page-container .bg-white {
+  background: #ffffff;
+}
+
+mat-card-content {
+    padding: 24px 16px;
+    border-radius: 8px;
+}

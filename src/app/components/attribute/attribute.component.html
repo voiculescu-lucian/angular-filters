@@ -1,0 +1,66 @@
+<div [formGroup]="group()" class="attribute-row">
+    <div class="relative">
+        @if (index() > 0) {
+            <span class="and-label">AND</span>
+        }
+        <span class="mr-12">&mdash;</span>
+    </div>
+
+    <mat-form-field appearance="outline" class="mr-12">
+        <span matPrefix class="prefix-label">
+            {{ eventName() ?? '' }}
+        </span>
+
+        <input 
+            matInput 
+            formControlName="property" 
+            [matAutocomplete]="autoAttribute" 
+            placeholder="Select an attribute"
+            #trigger="matAutocompleteTrigger">
+
+            <button
+                    mat-icon-button
+                    matSuffix
+                    disableRipple
+                    (mousedown)="$event.preventDefault()"
+                    (click)="togglePanel(trigger)"
+                    class="arrow-btn">
+
+                    <mat-icon fontSet="material-symbols-outlined">
+                        expand_more
+                    </mat-icon>
+                </button>
+
+        <mat-autocomplete #autoAttribute="matAutocomplete">
+            @for (prop of filteredProperties(); track prop.property) {
+                <mat-option [value]="prop.property">
+                    {{ prop.property }}
+                </mat-option>
+            }
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="mr-12">
+        <mat-select formControlName="operator">
+            @let selectedProp = group().controls.property.value;
+            
+            @if (getPropertyType(selectedProp) === 'string') {
+                @for (op of stringOperators; track op) {
+                    <mat-option [value]="op">{{ op }}</mat-option>
+                }
+            } @else {
+                @for (op of numberOperators; track op) {
+                    <mat-option [value]="op">{{ op }}</mat-option>
+                }
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput formControlName="value" placeholder="Select a value">
+    </mat-form-field>
+
+    <button mat-icon-button class="remove-button" (click)="onRemove()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>

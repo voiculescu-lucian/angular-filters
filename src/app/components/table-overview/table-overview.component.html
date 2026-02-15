@@ -1,0 +1,54 @@
+<ng-container>
+    <div class="page-container">
+        <mat-card>
+            <!-- HEADER -->
+            <div class="card-header">
+                <h2>{{ title | uppercase }}</h2>
+               
+                <button
+                    mat-button
+                    disableRipple
+                    class="discard-btn"
+                    (click)="discardFilters()"
+                    >
+                    Discard filters
+                </button>
+            </div>
+
+            <!-- CONTENT -->
+            <mat-card-content class="bg-white">
+               @for (group of form.controls; let i = $index; track group) {
+                    <app-funel-step
+                        [group]="group"
+                        [stepNumber]="i + 1"
+                        (deleteStep)="removeStep(i)"
+                        (copyStep)="duplicateStep(i)"
+                        >
+                    </app-funel-step>
+                }
+
+                <!-- ADD STEP -->
+                <div class="add-step-container">
+                    <button
+                        mat-button
+                        color="primary"
+                        class="add-step-btn"
+                        (click)="addStep()">
+                        + ADD FUNNEL STEP
+                    </button>
+                </div>
+            </mat-card-content>
+
+           <!-- FOOTER -->
+            <mat-card-actions class="card-actions">
+                <button
+                    mat-raised-button
+                    color="primary"
+                    class="apply-btn"
+                    (click)="applyFilters()">
+                    Apply filters
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</ng-container>

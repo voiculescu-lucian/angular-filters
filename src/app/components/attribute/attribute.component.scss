@@ -1,0 +1,42 @@
+.attribute-row {
+    display: inline-flex;
+    align-items: center;
+}
+
+.relative {
+    position: relative;
+}
+
+.and-label {
+    position: absolute;
+    left: -45px;
+}
+
+.attribute-row {
+    &:not(:hover) {
+        .remove-button {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}
+
+.mr-12 {
+    margin-right: 12px;
+}
+
+.prefix-label {
+    background-color: #f5f5f5;
+    color: #424242;
+    padding: 0 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #e0e0e0;
+    margin-right: 10px;
+    white-space: nowrap;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+}

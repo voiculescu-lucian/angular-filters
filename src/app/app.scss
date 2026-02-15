@@ -1,0 +1,33 @@
+:root {
+    --input-height: 40px;
+}
+
+::ng-deep {
+.mat-mdc-form-field {
+    .mat-mdc-text-field-wrapper {
+        height: var(--input-height) !important;
+        min-height: var(--input-height) !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        
+        display: flex;
+        align-items: center; 
+    }
+
+    input.mat-mdc-input-element {
+        margin-top: 0 !important;
+        top: 0 !important;
+        position: relative;
+    }
+
+    .mat-mdc-form-field-icon-suffix {
+        display: flex;
+        align-items: center;
+        padding: 0;
+    }
+    
+    .mat-mdc-form-field-subscript-wrapper {
+        display: none; 
+    }
+}
+}

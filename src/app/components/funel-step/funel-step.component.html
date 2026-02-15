@@ -1,0 +1,87 @@
+<div class="funnel-step">
+    <div class="step-header">
+        <div class="step-title">
+            <span>{{ stepNumber() }}. Step:</span>
+            <strong>{{ newValueSelected() ?? 'Unnamed step' }}</strong>
+            
+            <button mat-icon-button class="edit-btn">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+
+        <div class="step-actions">
+            <button 
+                mat-icon-button 
+                class="action-btn copy-btn" 
+                matTooltip="Duplicate step"
+                (click)="onCopy()">
+                <mat-icon>content_copy</mat-icon>
+            </button>
+
+            @if (stepNumber() > 1) {
+                <button 
+                    mat-icon-button 
+                    color="warn" 
+                    class="action-btn delete-btn"
+                    matTooltip="Delete step"
+                    (click)="onDelete()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            }
+        </div>
+    </div>
+
+    <div class="step-body">
+        <div class="event-row">
+            <mat-form-field appearance="outline" class="event-field">
+                <input matInput [formControl]="eventControl" [matAutocomplete]="auto" [placeholder]="placeholderInput"
+                 #trigger="matAutocompleteTrigger">
+
+                <button
+                    mat-icon-button
+                    matSuffix
+                    disableRipple
+                    (mousedown)="$event.preventDefault()"
+                    (click)="togglePanel(trigger)"
+                    class="arrow-btn">
+
+                    <mat-icon fontSet="material-symbols-outlined">
+                        expand_more
+                    </mat-icon>
+                </button>
+
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+                    @for (event of filteredEvents(); track event) {
+                        <mat-option [value]="event">{{ event }}</mat-option>
+                    }
+                </mat-autocomplete>
+            </mat-form-field>
+
+            @if (isEventSelected() && attributes.length === 0) {
+                <button mat-button color="primary" class="add-step-btn" (click)="addAttribute()">
+                    + Add an event attribute
+                </button>
+            }
+        </div>
+
+        <div class="attributes-container" [formGroup]="group()!">
+            <div formArrayName="attributes">
+                @for (attrGroup of attributes.controls; let i = $index; track i) {
+                    <app-attribute
+                        [group]="attrGroup"
+                        [index]="i"
+                        [eventName]="newValueSelected()"
+                        [availableProperties]="availableProperties()"
+                        (remove)="removeAttribute(i)">
+                    </app-attribute>
+                }
+            </div>
+
+            @if (isEventSelected() && attributes.length > 0) {
+                <button mat-button color="primary" class="refine-more-btn" (click)="addAttribute()">
+                    Refine more
+                </button>
+            }
+        </div>
+    </div>
+</div>
