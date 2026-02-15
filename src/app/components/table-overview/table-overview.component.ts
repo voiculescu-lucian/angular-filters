@@ -8,6 +8,7 @@ import { FunelStepComponent } from '../funel-step/funel-step.component';
 import {  FormArray, FormControl, FormGroup } from '@angular/forms';
 import { StepFormGroup } from './models/step-form-group.interface';
 import { StepAttributeFormGroup } from './models/step-attribute-form-group.interface';
+import { FunnelStepAttribute } from '../funel-step/models/funnel-step-attribute.interface';
 
 @Component({
   selector: 'app-table-overview',
@@ -64,7 +65,7 @@ export class TableOverviewComponent {
         });
 
         if (sourceStep.attributes && sourceStep.attributes.length > 0) {
-            sourceStep.attributes.forEach((attr: any) => {
+            sourceStep.attributes.forEach((attr: FunnelStepAttribute) => {
                 const attrGroup = new FormGroup<StepAttributeFormGroup>({
                     property: new FormControl(attr.property, { nonNullable: true }),
                     operator: new FormControl(attr.operator, { nonNullable: true }),

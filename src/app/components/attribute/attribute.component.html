@@ -31,7 +31,7 @@
                     </mat-icon>
                 </button>
 
-        <mat-autocomplete #autoAttribute="matAutocomplete">
+        <mat-autocomplete #autoAttribute="matAutocomplete" (optionSelected)="onOptionSelected($event)">
             @for (prop of filteredProperties(); track prop.property) {
                 <mat-option [value]="prop.property">
                     {{ prop.property }}
@@ -40,25 +40,43 @@
         </mat-autocomplete>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="mr-12">
-        <mat-select formControlName="operator">
-            @let selectedProp = group().controls.property.value;
-            
-            @if (getPropertyType(selectedProp) === 'string') {
-                @for (op of stringOperators; track op) {
-                    <mat-option [value]="op">{{ op }}</mat-option>
-                }
-            } @else {
-                @for (op of numberOperators; track op) {
-                    <mat-option [value]="op">{{ op }}</mat-option>
-                }
-            }
-        </mat-select>
-    </mat-form-field>
+    @if (group().controls.property.value) {
+        @let selectedProp = group().controls.property.value;
+        @let propType = getPropertyType(selectedProp);
 
-    <mat-form-field appearance="outline">
-        <input matInput formControlName="value" placeholder="Select a value">
-    </mat-form-field>
+        <mat-form-field appearance="outline" class="mr-12">
+                <mat-select formControlName="operator" (selectionChange)="onOperatorChange($event)">
+                    @if (propType === 'string') {
+                        @for (op of stringOperators; track op) {
+                            <mat-option [value]="op">{{ op }}</mat-option>
+                        }
+                    } @else {
+                        @for (op of numberOperators; track op) {
+                            <mat-option [value]="op">{{ op }}</mat-option>
+                        }
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            @if (isRangeOperator()) {
+                <div formGroupName="value" class="range-inputs-container">
+                    <mat-form-field appearance="outline" class="value-field compact-field">
+                        <input matInput formControlName="from" type="number" placeholder="from">
+                    </mat-form-field>
+                    <span class="range-separator">-</span>
+                    <mat-form-field appearance="outline" class="value-field compact-field">
+                        <input matInput formControlName="to" type="number" placeholder="to">
+                    </mat-form-field>
+                </div>
+            } 
+            
+            @else {
+                <mat-form-field appearance="outline" class="value-field compact-field">
+                    <input matInput formControlName="value" placeholder="value"
+                        [type]="getPropertyType(group().controls.property.value) === 'number' ? 'number' : 'text'">
+                </mat-form-field>
+            }
+    }
 
     <button mat-icon-button class="remove-button" (click)="onRemove()">
         <mat-icon>close</mat-icon>

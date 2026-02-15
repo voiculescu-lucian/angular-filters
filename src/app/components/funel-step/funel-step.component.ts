@@ -6,10 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CustomerEvent } from '../../events/models/customer-event.interface';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { CustomerEventsService } from '../../events/customer-events.service';
-import { of, startWith, Subject, takeUntil, tap } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
+import { startWith, Subject, takeUntil, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatButtonModule } from '@angular/material/button';
 import { StepAttributeFormGroup } from '../table-overview/models/step-attribute-form-group.interface';
 import { CustomerEventProperty } from '../../events/models/customer-event-property.interface';
@@ -41,12 +41,7 @@ export class FunelStepComponent implements OnInit, OnDestroy {
     public copyStep = output<void>();
     public deleteStep = output<void>();
 
-    public attributeControl = new FormControl('');
     public newValueSelected = signal<string | null>(null);
-    public availableAttributes = signal<Array<any>>([]);
-
-    public stringOperators = ['equals', 'does not equal', 'contains', 'does not contain'];
-    public numberOperators = ['equal to', 'in between', 'less than', 'greater than'];
 
     public placeholderInput = 'Select an event';
 
@@ -59,7 +54,7 @@ export class FunelStepComponent implements OnInit, OnDestroy {
     public isEventSelected = computed(() => !!this.newValueSelected());
 
     public selectedEventObj = computed(() => 
-        this.events().find(e => e.type === this.newValueSelected())
+        this.events().find(event => event.type === this.newValueSelected())
     );
 
     public availableProperties: Signal<CustomerEventProperty[]> = computed(() => 
@@ -113,24 +108,6 @@ export class FunelStepComponent implements OnInit, OnDestroy {
     public ngOnDestroy(): void {
         this.$destroy.next();
         this.$destroy.complete();
-        console.log('FunnelStepComponent destroyed');
-    }
-
-    public getPropertyType(propertyName: string | null | undefined): 'string' | 'number' {
-        if (!propertyName) {
-            return 'string';
-        }
-        
-        const prop = this.availableProperties().find(p => p.property === propertyName);
-        return (prop?.type as 'string' | 'number') || 'string';
-    }
-
-    public filteredAttributes() {
-        const search = this.attributeControl.value?.toLowerCase() ?? '';
-
-        return this.availableAttributes().filter(attr =>
-            attr.property.toLowerCase().includes(search)
-        );
     }
 
     public togglePanel(trigger: MatAutocompleteTrigger) {
@@ -142,11 +119,6 @@ export class FunelStepComponent implements OnInit, OnDestroy {
             this.placeholderInput = 'Filter events...';
         }
     }
-
-    public onAttributeSelected(event: MatAutocompleteSelectedEvent): void {
-        const value = event.option.value;
-        console.log('Selected attribute:', value);
-    }   
 
     public onOptionSelected(event: MatAutocompleteSelectedEvent): void {
         const value = event.option.value;
