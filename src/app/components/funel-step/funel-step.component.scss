@@ -1,28 +1,10 @@
-/* FUNNEL INNER BOX */
 .funnel-step {
   background: #ffffff;
   width: 100%;
 }
 
-/* STEP TITLE */
-.step-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  margin-bottom: 12px;
-
-  strong {
-    font-weight: 600;
-  }
-}
-
 .event-field {
   width: 260px;
-}
-
-.event-field input {
-  cursor: pointer;
 }
 
 .edit-btn {
@@ -48,33 +30,10 @@
   cursor: default;
 }
 
-.event-attributes {
-  margin-top: 16px;
-}
-
-.add-attribute-btn {
-  font-weight: 600;
-  text-transform: none;
-}
-
-.property-row {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #6b7280;
-}
-
 .step-body {
   display: flex;
   gap: 16px;
   align-items: flex-start;
-}
-
-.event-field {
-  width: 250px;
-}
-
-.attribute-field {
-  width: 250px;
 }
 
 .step-header {

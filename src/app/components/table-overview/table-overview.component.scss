@@ -1,23 +1,17 @@
-/* PAGE BACKGROUND */
 .page-container {
   padding: 32px;
   background: #f5f6f8;
   min-height: 100vh;
-}
-
-/* MAIN CARD */
-.customer-filter-card {
-  background: #f0f1f4;
-  border-radius: 6px;
-  border: 1px solid #e2e5e9;
-  box-shadow: none;
+  
+  .bg-white {
+    background: #ffffff;
+  }
 }
 
 mat-card {
     padding: 8px 24px;
 }
 
-/* HEADER */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -43,12 +37,9 @@ button.discard-btn {
     font-weight: 500;
 }
 
-.customer-filter-card {
-  padding: 0;
-}
-
 mat-card-content {
-  padding: 16px;
+  padding: 16px 16px 32px;
+  border-radius: 8px;
 }
 
 app-funel-step {
@@ -58,7 +49,6 @@ app-funel-step {
   width: 100%;
 }
 
-/* SEPARATOR + ADD STEP */
 .add-step-container {
   padding-top: 20px;
   text-align: center;
@@ -71,7 +61,6 @@ app-funel-step {
   }
 }
 
-/* APPLY BUTTON */
 mat-card-actions button.apply-btn {
   background-color: #ffcc00;
   color: #000;
@@ -82,24 +71,7 @@ mat-card-actions button.apply-btn {
   border-radius: 4px;
 }
 
-.customer-filter-card {
-  transition: box-shadow 0.2s ease;
-
-  &:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-}
-
 mat-card-actions.card-actions {
   padding: 16px 0;
   align-items: flex-start;
-}
-
-.page-container .bg-white {
-  background: #ffffff;
-}
-
-mat-card-content {
-    padding: 24px 16px;
-    border-radius: 8px;
 }

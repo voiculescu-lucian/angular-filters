@@ -9,6 +9,7 @@ import {  FormArray, FormControl, FormGroup } from '@angular/forms';
 import { StepFormGroup } from './models/step-form-group.interface';
 import { StepAttributeFormGroup } from './models/step-attribute-form-group.interface';
 import { FunnelStepAttribute } from '../funel-step/models/funnel-step-attribute.interface';
+import { mapFormToAppliedFilters } from './filter.mapper';
 
 @Component({
   selector: 'app-table-overview',
@@ -45,7 +46,8 @@ export class TableOverviewComponent {
 
     public applyFilters() {
         if (this.form.valid) {
-            console.log('Filters Applied:', this.form.getRawValue());
+            const mapped = mapFormToAppliedFilters(this.form);
+            console.log('Filters Applied:', mapped);
         } else {
             this.form.markAllAsTouched();
         }

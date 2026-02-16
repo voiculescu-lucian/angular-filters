@@ -1,6 +1,13 @@
 .attribute-row {
     display: inline-flex;
     align-items: center;
+
+     &:not(:hover) {
+        .remove-button {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
 }
 
 .relative {
@@ -10,15 +17,6 @@
 .and-label {
     position: absolute;
     left: -45px;
-}
-
-.attribute-row {
-    &:not(:hover) {
-        .remove-button {
-            opacity: 0;
-            visibility: hidden;
-        }
-    }
 }
 
 .mr-12 {
